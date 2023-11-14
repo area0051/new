@@ -9,6 +9,8 @@ let dead_flag = 0;
 let dead_t = 0;
 let score = 0;
 let rank = 'D'; // Initialize rank as 'D'
+const initialRank = 'D'; // Store the initial rank
+const version = '1.2'; // Change this to your desired version
 
 class Shadow {
   constructor() {
@@ -43,9 +45,10 @@ function updateRank() {
     rank = 'A';
   } else if (score >= 40) {
     rank = 'S';
+  } else {
+    rank = initialRank; // Reset to 'D' if the score is below 10
   }
 }
-
 
 function draw() {
   background(255, 200, 0);
@@ -123,7 +126,13 @@ function draw() {
   }
 
   renderEffectList();
+
+  // Display version at the right-bottom corner
+  textSize(12);
+  fill(100);
+  text('Version ' + version, width - 50, height - 10);
 }
+
 
 
 function mousePressed(){
